@@ -1,9 +1,9 @@
-= simple_form_for [@gallery] do |g|
+= simple_form_for [@gallery.user, @gallery] do |g|
   = g.error_notification
 
   .form-inputs
-    = f.input :title
-    = f.input :description
+    = g.input :title
+    = g.input :description
 
   .form-actions
-    = f.button :submit
+    = g.button :submit

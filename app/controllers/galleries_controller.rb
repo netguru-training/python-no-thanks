@@ -28,6 +28,7 @@ class GalleriesController < ApplicationController
   end
 
   def new
+    @gallery = Gallery.new(user: current_user)
   end
 
   private
