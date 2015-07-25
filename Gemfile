@@ -7,7 +7,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-gem 'paperclip, '~> 4.2'
+gem 'paperclip', '~> 4.2'
 gem 'paperclip-dropbox', '>= 1.1.7'
 gem 'decent_exposure'
 gem 'acts_as_votable', '~> 0.10.0'
@@ -44,6 +44,7 @@ group :production do
   gem 'rails_12factor'
 end
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
