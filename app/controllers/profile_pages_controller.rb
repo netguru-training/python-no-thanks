@@ -1,7 +1,7 @@
 class ProfilePagesController < ApplicationController
   before_action :authenticate_user!
 
-  expose(:profile, model: :user)
+  expose_decorated(:profile, model: :user, decorator: ProfilePageDecorator)
 
   def show
   end

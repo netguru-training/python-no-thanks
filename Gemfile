@@ -12,6 +12,7 @@ gem 'paperclip-dropbox', '>= 1.1.7'
 gem 'decent_exposure'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'draper'
+gem 'decent_decoration'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable'
 

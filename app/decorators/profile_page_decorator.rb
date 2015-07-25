@@ -10,4 +10,8 @@ class ProfilePageDecorator < Draper::Decorator
   #     end
   #   end
 
+  def joined
+    object.created_at.strftime("%d-%m-%Y")
+  end
+
 end
