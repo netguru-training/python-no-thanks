@@ -1,4 +1,5 @@
 class GalleriesController < ApplicationController
+
   
   expose(:gallery)
 
@@ -8,6 +9,9 @@ class GalleriesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
   end
 
   def update
@@ -21,6 +25,9 @@ class GalleriesController < ApplicationController
   def destroy
     @gallery.destroy
     redirect_to user_gallery_path(@gallery.user, @gallery), :notice => "Gallery deleted."
+  end
+
+  def new
   end
 
   private
