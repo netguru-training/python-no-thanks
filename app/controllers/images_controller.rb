@@ -33,7 +33,7 @@ class ImagesController < ActionController::Base
   private
   
   def image_params
-    params.require(:image).permit(:picture, @original_filename, @content_type)
+    params.require(:image).permit(:picture, :tag_list)
   end
   
   def is_owner?

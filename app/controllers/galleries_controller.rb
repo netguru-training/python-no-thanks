@@ -1,5 +1,6 @@
 class GalleriesController < ApplicationController  
-  expose(:gallery, attributes: :secure_params)
+  expose(:gallery, attributes: :gallery_params)
+  expose(:image, attributes: :image_params)
 
   def show
   end
@@ -32,8 +33,12 @@ class GalleriesController < ApplicationController
 
   private
 
-  def secure_params
+  def gallery_params
     params.require(:gallery).permit(:title, :description)
+  end
+  
+  def image_params
+    params.require(:image).permit(:picture, :tag_list)
   end
 
 end
