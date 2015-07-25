@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name
   end
+  
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
 end

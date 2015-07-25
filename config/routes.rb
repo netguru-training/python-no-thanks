@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     match '/:id', to: 'profile_pages#show', as: "show_profile", via: [:get]
   end
 
-  resources :users do
-    resources :galleries
+  resources :users
+  resources :galleries do
+    member do
+      resources :images
+    end
   end
-
 end
