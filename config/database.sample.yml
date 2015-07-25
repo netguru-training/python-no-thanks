@@ -1,18 +1,15 @@
 default: &default
   adapter: postgresql
-  host: localhost
   pool: 5
   timeout: 5000
-  username: workshops
-  password:
 
 development:
   <<: *default
-  database: python_no_thanks_development
+  database: python-no-thanks_development
 
 test:
   <<: *default
-  database: python_no_thanks_test
+  database: python-no-thanks_test
 
 production:
   <<: *default
