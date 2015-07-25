@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  def index
-    
-  end
+  
+  expose(:images) { Image.all }
+  expose(:galleries) { Gallery.all }
+  
 end

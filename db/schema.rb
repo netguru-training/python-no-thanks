@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20150725125546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "galleries", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -25,6 +31,34 @@ ActiveRecord::Schema.define(version: 20150725125546) do
   end
 
   add_index "galleries", ["user_id"], name: "index_galleries_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+    t.integer  "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
