@@ -3,8 +3,8 @@
 %p
   %b 
   Gallery:
-  = @gallery.title
+  = gallery.title
 
-= link_to 'Edit', edit_user_gallery_path(@gallery.user, @gallery)
+= link_to 'Edit', edit_user_gallery_path(gallery.user, gallery)
 \|
-= link_to 'Back', user_galleries_path(@gallery.user, @gallery)
+= link_to 'Back', user_galleries_path(gallery.user, gallery)

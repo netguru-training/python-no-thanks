@@ -1,12 +1,5 @@
-class GalleriesController < ApplicationController
-
-  
-  expose(:gallery)
-
-  def index
-    @user = User.find(params[:user_id])
-    @galleries = @user.galleries
-  end
+class GalleriesController < ApplicationController  
+  expose(:gallery, attributes: :secure_params)
 
   def show
   end
@@ -15,26 +8,32 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    if @gallery.update_attributes(secure_params)
-      redirect_to user_gallery_path(@gallery.user, @gallery), :notice => "Gallery updated."
+    if gallery.save
+      redirect_to user_gallery_path(gallery.user, gallery), notice: "Gallery updated."
     else
-      redirect_to user_gallery_path(@gallery.user, @gallery), :alert => "Unable to update gallery."
+      render 'edit'
     end
   end
 
   def destroy
-    @gallery.destroy
-    redirect_to user_gallery_path(@gallery.user, @gallery), :notice => "Gallery deleted."
+    if gallery.destroy
+      redirect_to user_path(gallery.user), notice: "Gallery deleted."
+    else
+      redirect_to user_gallery_path(gallery.user, gallery), alert: "Can not destroy gallery."
+    end
   end
 
   def new
-    @gallery = Gallery.new(user: current_user)
+  end
+
+  def create
+    
   end
 
   private
 
   def secure_params
-    params.require(:gallery).permit()
+    params.require(:gallery).permit(:title, :description)
   end
 
 end
