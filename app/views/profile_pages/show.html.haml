@@ -7,3 +7,7 @@
       %p.join_date
         Date joined
         = profile.created_at.strftime("%d-%m-%Y")
+
+    .col-md-6
+      - profile.galleries.each do |gallery|
+        %p= gallery
