@@ -1,0 +1,14 @@
+%h2 
+  User
+  = @user.name
+  galleries
+%div
+  %h3 Galleries
+
+  %table
+    %tbody
+      - @galleries.each do |gallery|
+        %tr
+          %td= gallery.id
+          %td= gallery.title
+    
