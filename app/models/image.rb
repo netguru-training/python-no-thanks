@@ -2,6 +2,8 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   validates :user, :title, :description, :gallery, presence: true
 
+  acts_as_commentable
+
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" },
     default_url: ":style/missing.png",
