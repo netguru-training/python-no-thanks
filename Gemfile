@@ -13,6 +13,7 @@ gem 'decent_exposure'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'draper'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts_as_commentable'
 
 group :development, :test do
   gem 'byebug'
