@@ -1,0 +1,27 @@
+/* Home Page */
+
+#home_images {
+  .home_image {
+    display: inline-block;
+    font-size: 1.25rem;
+    max-width: 90%;
+
+  }
+}
+
+.tags {
+  list-style: none;
+}
+
+.jumbotron {
+  background-image: url("jumbo.jpg");
+  background-size: cover;
+  padding: 4rem 1rem;
+  margin-bottom: 4rem;
+    .title {
+      color: white;
+      font-size: 4.5rem;
+      font-family: Verdana;
+      line-height: 1.5;
+  }
+}
