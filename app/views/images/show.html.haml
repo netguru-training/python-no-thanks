@@ -1,8 +1,9 @@
 .container
   %section
-    .col-md-2
-      %h4 Title: <span class='image-title'>#{image.title}</span>
-      %h4 Description: <span class='image-description'>#{image.description}</span>
-      
-    .col-md-10
+    .col-md-3
+      .image-info
+        %h4 Title: <span class='image-title'>#{image.title}</span>
+        %h4 Description: <span class='image-description'>#{image.description}</span>
+        %h4= link_to "Galeria: #{image.gallery.title}", gallery_path(image.gallery)
+    .col-md-9
       = image_tag image.picture.url(:original)
