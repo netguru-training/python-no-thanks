@@ -4,6 +4,7 @@ class GalleriesController < ApplicationController
 
   expose(:gallery, attributes: :strong_params)
   expose(:image, attributes: :image_params)
+  expose(:tags) { extract_tags }
 
   def show
   end
@@ -53,4 +54,14 @@ class GalleriesController < ApplicationController
       flash[:error] = "You are not permitted to do this action. Please log in."
       redirect_to new_user_session_path
     end
+  
+  def extract_tags
+    array = Array.new
+    gallery.images.each do |i|
+      i.tag_list.each do |t|
+        array.push(t) unless array.include?(t)
+      end
+    end
+    array.join(', ')
+  end
 end

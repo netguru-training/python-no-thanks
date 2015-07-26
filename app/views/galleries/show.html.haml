@@ -1,10 +1,23 @@
 %p#notice= notice
-
-%p
-  %b 
-  Gallery:
-  = gallery.title
-
+.col-md-2
+  %h4= gallery.title
+.col-md-8
+  .row
+    .info-background
+      %ul.no-bullets.list-inline
+        %li
+          %h4= gallery.title
+        %li
+          %h4= gallery.description
+        %li
+          %h4= "User: #{gallery.user.email}"
+        %li
+          %h4= "Tags: #{tags}"
+  .row
+    -gallery.images.each do |i|
+      = link_to image_tag(i.picture.url(:medium), class: 'gallery-image'), gallery_image_path(i.gallery, i)
+.col-md-2
+.row
 = link_to 'Edit', edit_gallery_path(gallery)
 \|
 = link_to 'Back', gallery_path(gallery)
