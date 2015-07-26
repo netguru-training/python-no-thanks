@@ -17,6 +17,7 @@ class GalleriesController < ApplicationController
   def create
     # gallery.user = current_user
     if gallery.save
+      #
     else
       #
     end
@@ -53,7 +54,7 @@ class GalleriesController < ApplicationController
     end
 
     def check_user_ownership!
-      unless current_user == gallery.user do
+      unless current_user == gallery.user
         flash[:error] = "You are not permitted to do this action. Please log in."
         redirect_to new_user_session_path
       end

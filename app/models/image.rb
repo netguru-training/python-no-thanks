@@ -14,5 +14,5 @@ class Image < ActiveRecord::Base
   belongs_to :gallery
 
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
-  validates :user, :title, :description, :gallery, presence: true
+  validates :user, :title, :description, presence: true
 end
