@@ -15,6 +15,7 @@ gem 'draper'
 gem 'decent_decoration'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_commentable'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug'
