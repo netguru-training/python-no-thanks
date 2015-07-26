@@ -1,15 +1,17 @@
 class HomeController < ApplicationController
+
   expose(:images) { find_images }
-  
+
   private
   
   def find_images
+    relation = Image.includes(:gallery)
     if tag = params[:tag]
-      Image.tagged_with([tag], :any => true)
+      relation.tagged_with([tag], :any => true)
     elsif word = params[:search]
-      Image.where('title ILIKE ?', "%#{word}%")
+      relation.where('title ILIKE ?', "%#{word}%")
     else
-      Image.all
+      relation.all
     end
   end
 end
