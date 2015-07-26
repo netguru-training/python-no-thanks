@@ -10,7 +10,7 @@ RSpec.describe GalleriesController, type: :controller do
       end
       subject { post :create, params }
 
-      it "sth" do
+      it "creates a new Gallery with new set of Images" do
         subject
         expect(response).to be_successful
       end
