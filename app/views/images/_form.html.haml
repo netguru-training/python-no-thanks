@@ -1,0 +1,10 @@
+= simple_form_for [image] do |g|
+  = g.error_notification
+
+  .form-inputs
+    = g.input :title
+    = g.input :description
+    = g.association :gallery
+
+  .form-actions
+    = g.button :submit
