@@ -1,9 +1,14 @@
-= simple_form_for [gallery.user, gallery] do |g|
-  = g.error_notification
+= simple_form_for [gallery.user, gallery] do |f|
+  = f.error_notification
 
   .form-inputs
-    = g.input :title
-    = g.input :description
+    = f.input :title
+    = f.input :description
 
-  .form-actions
-    = g.button :submit
+    %h3 Images
+    #images
+      = f.simple_fields_for :images, html: {multipart: true} do |image|
+        = render 'image_fields', f: image
+    .links
+      = link_to_add_association 'add image', f, :images
+  = f.submit

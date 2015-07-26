@@ -42,7 +42,7 @@ class GalleriesController < ApplicationController
   private
 
     def strong_params
-      params.require(:gallery).permit(:title, :description, images_attributes: [:id, :picture, :tag_list, :picture_file_name])
+      params.require(:gallery).permit(:title, :description, images_attributes: [:picture, :tag_list, :picture_file_name, :title, :description])
     end
 
     def gallery_params
