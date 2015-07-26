@@ -1,0 +1,6 @@
+APP_KEY:             "insert value here"
+APP_SECRET:          "insert value here"
+ACCESS_TOKEN:        "insert value here"
+ACCESS_TOKEN_SECRET: "insert value here"
+USER_ID:             "insert value here"
+ACCESS_TYPE:         "insert value here"

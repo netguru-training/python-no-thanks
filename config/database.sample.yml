@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: python-no-thanks_development
+  database: python_no_thanks_development
 
 test:
   <<: *default
-  database: python-no-thanks_test
+  database: python_no_thanks_test
 
 production:
   <<: *default
