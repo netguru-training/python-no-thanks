@@ -44,7 +44,8 @@ class GalleriesController < ApplicationController
   private
 
     def strong_params
-      params.require(:gallery).permit(:title, :description, images_attributes: [:id, :title, :description, :picture, :tag_list, :picture_file_name])
+      params.require(:gallery).permit(:title, :description,
+          images_attributes: [:id, :title, :description, :picture, :tag_list, :picture_file_name])
     end
 
     def check_user_ownership!

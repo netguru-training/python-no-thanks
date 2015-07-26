@@ -13,7 +13,11 @@ RSpec.describe GalleriesController, type: :controller do
       context "with valid params" do
         let(:params) do
           {
-            gallery: { title: "MyTitle", user: test_user, description: "MyDesc", images_attributes: [{ title: "ImgTitle", description: "ImgDescription", user: test_user, picture_file_name: 'test-image.jpg' }] }
+            gallery: { title: "MyTitle", user: test_user, description: "MyDesc",
+                images_attributes: [{ title: "ImgTitle",
+                                      description: "ImgDescription",
+                                      user: test_user,
+                                      picture_file_name: 'test-image.jpg' }] }
           }
         end
 
