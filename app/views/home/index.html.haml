@@ -5,5 +5,5 @@
       Tags
     .col-md-10
       - images.each do |i|
-        .homepage-image
-          = image_tag i.picture.url(:thumb)
+        .home-images-index
+          = image_tag i.picture.url(:thumb), class: 'homepage-image'

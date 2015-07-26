@@ -10,14 +10,9 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 user1 = User.create!(email: "jan.kowalski@gmail.com", password: "12345678", password_confirmation: "12345678", name: "Jan Kowalski" )
 
-
-gallery1 = Gallery.new(user: user1, title: "Wakacje 2015", description: "2 tyg. wyjazd na mazury")
-
-image1 = Image.new(user: user1, gallery: gallery1, picture: File.new("#{Rails.root}/app/assets/images/sample3.jpg"), title: "sunflower", description:"a beautyfull flower")
-
-gallery1.save
-image1.save
-
-for i in (1..19) do
-  Gallery.create(title: "Test", description: "opis", user_id: 1, images: [Image.new({ :picture => File.new("#{Rails.root}/app/assets/images/sample_images/im" + i.to_s + ".jpg"), :user_id => 1, :title => "test1", :description => "test2"})])
+10.times do |i|
+  gal = Gallery.new(title: "Test", description: "opis", user: user1)
+  im = Image.new(user: user1, :title => "test1", :description => "test2", :gallery => gal, :picture => File.new("#{Rails.root}/app/assets/images/sample_images/im" + i.to_s + ".jpg"))
+  gal.images << im
+  gal.save!
 end
