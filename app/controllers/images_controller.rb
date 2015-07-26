@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
 
   def create
     image.user = current_user
+    image.tag_list.add(params[:image][:tags], parse: true)
     gallery.images << image
     
     if gallery.save

@@ -7,7 +7,8 @@
             %h4 Title: <span class='image-title image-info-table-row'>#{image.title}</span>
             %h4 Description: <span class='image-description image-info-table-row'>#{image.description}</span>
             %h4= link_to "Galeria: #{image.gallery.title}", gallery_path(image.gallery), class: 'image-info-table-row'
+            %h4= "Tags: #{image.tag_list.join(', ')}"
+            = link_to "like", like_gallery_image_path, method: :get, class: 'image-info-table-row'
+            = pluralize(image.get_upvotes.size, "like")
     .col-md-9
       = image_tag image.picture.url(:original)
-      = link_to "like", like_gallery_image_path, method: :get
-      = pluralize(image.get_upvotes.size, "like")
