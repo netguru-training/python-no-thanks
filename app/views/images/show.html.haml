@@ -2,9 +2,11 @@
   %section
     .col-md-3
       .image-info
-        %h4 Title: <span class='image-title'>#{image.title}</span>
-        %h4 Description: <span class='image-description'>#{image.description}</span>
-        %h4= link_to "Galeria: #{image.gallery.title}", gallery_path(image.gallery)
+        %table.table
+          %tbody
+            %h4 Title: <span class='image-title image-info-table-row'>#{image.title}</span>
+            %h4 Description: <span class='image-description image-info-table-row'>#{image.description}</span>
+            %h4= link_to "Galeria: #{image.gallery.title}", gallery_path(image.gallery), class: 'image-info-table-row'
     .col-md-9
       = image_tag image.picture.url(:original)
       = link_to "like", like_gallery_image_path, method: :get
