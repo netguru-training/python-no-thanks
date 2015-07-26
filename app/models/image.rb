@@ -1,4 +1,5 @@
 class Image < ActiveRecord::Base
+  acts_as_taggable_on :tags
   acts_as_commentable
 
   has_attached_file :picture,
@@ -7,8 +8,6 @@ class Image < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: Rails.root.join("config/dropbox.yml"),
     dropbox_options: {}
-
-  acts_as_taggable_on :funny, :sad, :ruby
 
   belongs_to :user
   belongs_to :gallery
