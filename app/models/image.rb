@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
   acts_as_taggable_on :tags
   acts_as_commentable
+  acts_as_votable
 
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" },

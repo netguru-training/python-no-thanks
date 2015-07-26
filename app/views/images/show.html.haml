@@ -1,5 +1,6 @@
 .container
   %section
+<<<<<<< HEAD
     .col-md-3
       .image-info
         %h4 Title: <span class='image-title'>#{image.title}</span>
@@ -7,3 +8,5 @@
         %h4= link_to "Galeria: #{image.gallery.title}", gallery_path(image.gallery)
     .col-md-9
       = image_tag image.picture.url(:original)
+      = link_to "like", like_gallery_image_path, method: :get
+      = pluralize(image.get_upvotes.size, "like")

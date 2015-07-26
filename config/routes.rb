@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get '/images/new', to: 'images#new', as: 'new_image'
   post '/images', to: 'images#create', as: 'images'
   resources :galleries do
-    resources :images, except: [:new, :create]
+    resources :images, except: [:new, :create] do
+      member do
+        get "like", to: "images#upvote"
+        get "dislike", to: "images#downvote"
+      end
+    end
   end
 end
