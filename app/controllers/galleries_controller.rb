@@ -1,11 +1,25 @@
-class GalleriesController < ApplicationController  
-  expose(:gallery, attributes: :gallery_params)
+class GalleriesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_user_ownership!, only: [:edit, :update, :destroy]
+
+  expose(:gallery, attributes: :strong_params)
   expose(:image, attributes: :image_params)
 
   def show
   end
 
+  def new
+  end
+
   def edit
+  end
+
+  def create
+    # gallery.user = current_user
+    if gallery.save
+    else
+      #
+    end
   end
 
   def update
@@ -24,21 +38,24 @@ class GalleriesController < ApplicationController
     end
   end
 
-  def new
-  end
-
-  def create
-    
-  end
-
   private
 
-  def gallery_params
-    params.require(:gallery).permit(:title, :description)
-  end
-  
-  def image_params
-    params.require(:image).permit(:picture, :tag_list)
-  end
+    def strong_params
+      params.require(:gallery).permit(:title, :description, images_attributes: [:id, :picture, :tag_list, :picture_file_name])
+    end
 
+    def gallery_params
+      params.require(:gallery).permit(:title, :description)
+    end
+
+    def image_params
+      params.require(:image).permit(:picture, :tag_list)
+    end
+
+    def check_user_ownership!
+      unless current_user == gallery.user do
+        flash[:error] = "You are not permitted to do this action. Please log in."
+        redirect_to new_user_session_path
+      end
+    end
 end

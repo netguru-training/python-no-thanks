@@ -5,4 +5,5 @@ class Gallery < ActiveRecord::Base
   belongs_to :user
 
   validates :user, :images, :title, :description, presence: true
+  accepts_nested_attributes_for :images
 end
