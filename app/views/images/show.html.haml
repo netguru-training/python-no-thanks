@@ -1,0 +1,8 @@
+.container
+  %section
+    .col-md-2
+      %h4 Title: <span class='image-title'>#{image.title}</span>
+      %h4 Description: <span class='image-description'>#{image.description}</span>
+      
+    .col-md-10
+      = image_tag image.picture.url(:original)

@@ -1,7 +1,6 @@
-class ImagesController < ActionController::Base
+class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :is_owner?, only: [:edit, :update, :destroy]
-  protect_from_forgery with: :exception
   
   expose(:gallery)
   expose(:image, attributes: :image_params)

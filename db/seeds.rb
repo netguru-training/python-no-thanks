@@ -10,7 +10,7 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 user1 = User.create!(email: "jan.kowalski@gmail.com", password: "12345678", password_confirmation: "12345678", name: "Jan Kowalski" )
 
-10.times do |i|
+(1..10).each do |i|
   gal = Gallery.new(title: "Test", description: "opis", user: user1)
   im = Image.new(user: user1, :title => "test1", :description => "test2", :gallery => gal, :picture => File.new("#{Rails.root}/app/assets/images/sample_images/im" + i.to_s + ".jpg"))
   gal.images << im
