@@ -52,6 +52,6 @@ We provide you with a test user account, just to play around:
   - password: '12345678'
 
 ### That's it!
-Since we are just starting our adventure with Rails, we would love to hear your feedback! It really is invaluable when it comes to learning new thing, so feel free to contact us if you have any comments!
+Since we are just starting our adventure with Rails, we would love to hear your feedback! It really is invaluable when it comes to learning new things, so feel free to contact us if you have any comments!
 
 **Thank You!**
