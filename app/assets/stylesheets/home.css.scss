@@ -3,8 +3,17 @@
 #home_images {
   .home_image {
     display: inline-block;
-    font-size: 1.25rem;
+    font-size: 1rem;
     max-width: 90%;
+    background: #F8F9FA;
+    padding-top: 1.25rem;
+    .home_title {
+      display: inline-block;
+      margin-left: -0.2rem;
+    }
+    .home_likes {
+      display: inline-block;
+    }
 
   }
 }

@@ -9,9 +9,12 @@
       %ul
         - ActsAsTaggableOn::Tag.most_used(3).each do |t|
           %li.tags= link_to t.name, root_path(tag: t.name)
-    #images.col-md-10
+    #home_images.col-md-10
       - images.each do |i|
-        .image.col-md-3
+        .home_image.col-md-3
           = link_to image_tag(i.picture.url(:medium), class: 'homepage-image'), gallery_image_path(i.gallery, i)
-          %p.title= i.title
-          %span.likes= pluralize(i.get_upvotes.size, "Like")
+          .col-md-12
+            .col-md-7
+              %p.home_title= i.title
+            .col-md-5
+              %span.home_likes= pluralize(i.get_upvotes.size, "Like")
