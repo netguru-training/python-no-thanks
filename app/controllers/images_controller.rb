@@ -2,11 +2,14 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_action :is_owner?, only: [:edit, :update, :destroy]
 
-  expose(:gallery)
+  expose(:gallery) { find_gallery }
   expose(:image, attributes: :image_params)
 
   def create
-    if gallery.images << image
+    image.user = current_user
+    gallery.images << image
+    
+    if gallery.save
       redirect_to gallery_image_path(gallery, image), notice: 'Image created'
     else
       redirect_to 'galleries/edit', alert: 'Image was not created.'
@@ -41,8 +44,12 @@ class ImagesController < ApplicationController
 
   private
 
+  def find_gallery
+    Gallery.find_by(id: params[:image][:gallery_id])
+  end
+  
   def image_params
-    params.require(:image).permit(:picture, :tag_list)
+    params.require(:image).permit(:picture, :tag_list, :title, :description)
   end
 
   def is_owner?

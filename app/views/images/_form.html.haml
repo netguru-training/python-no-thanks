@@ -1,10 +1,11 @@
-= simple_form_for [image] do |g|
-  = g.error_notification
+= simple_form_for image, html: {multipart: true} do |f|
+  = f.error_notification
 
-  .form-inputs
-    = g.input :title
-    = g.input :description
-    = g.association :gallery
+  .input-fields
+    = f.association :gallery
+    = f.input :title
+    = f.input :description
+    = f.input :picture, as: :file
 
   .form-actions
-    = g.button :submit
+    = f.button :submit
