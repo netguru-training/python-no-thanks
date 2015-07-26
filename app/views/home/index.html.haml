@@ -1,7 +1,10 @@
 .container
   %section
     .col-md-2
-      Tags
+      %h4 Popular tags
+      %ul
+        - ActsAsTaggableOn::Tag.most_used(3).each do |t|
+          %li.tags= link_to t.name, root_path(tag: t.name)
     .col-md-10
       - images.each do |i|
         = link_to image_tag(i.picture.url(:medium), class: 'homepage-image'), gallery_image_path(i.gallery, i)
