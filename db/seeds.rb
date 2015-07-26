@@ -17,3 +17,7 @@ image1 = Image.new(user: user1, gallery: gallery1, picture: File.new("#{Rails.ro
 
 gallery1.save
 image1.save
+
+for i in (1..19) do
+  Gallery.create(title: "Test", description: "opis", user_id: 1, images: [Image.new({ :picture => File.new("#{Rails.root}/app/assets/images/sample_images/im" + i.to_s + ".jpg"), :user_id => 1, :title => "test1", :description => "test2"})])
+end

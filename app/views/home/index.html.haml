@@ -1,2 +1,9 @@
 .container
   %h1.center Welcome
+  %section
+    .col-md-2
+      Tags
+    .col-md-10
+      - images.each do |i|
+        .homepage-image
+          = image_tag i.picture.url(:thumb)
