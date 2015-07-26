@@ -15,17 +15,19 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    # gallery.user = current_user
+    gallery.user = current_user
+    gallery.images.each { |i| i.user = current_user }
+
     if gallery.save
-      #
+      redirect_to gallery_path(gallery), notice: "Gallery created."
     else
-      #
+      render 'new'
     end
   end
 
   def update
     if gallery.save
-      redirect_to user_gallery_path(gallery.user, gallery), notice: "Gallery updated."
+      redirect_to gallery_path(gallery), notice: "Gallery updated."
     else
       render 'edit'
     end
@@ -35,28 +37,19 @@ class GalleriesController < ApplicationController
     if gallery.destroy
       redirect_to user_path(gallery.user), notice: "Gallery deleted."
     else
-      redirect_to user_gallery_path(gallery.user, gallery), alert: "Can not destroy gallery."
+      redirect_to gallery_path(gallery), alert: "Can not destroy gallery."
     end
   end
 
   private
 
     def strong_params
-      params.require(:gallery).permit(:title, :description, images_attributes: [:picture, :tag_list, :picture_file_name, :title, :description])
-    end
-
-    def gallery_params
-      params.require(:gallery).permit(:title, :description)
-    end
-
-    def image_params
-      params.require(:image).permit(:picture, :tag_list)
+      params.require(:gallery).permit(:title, :description, images_attributes: [:id, :title, :description, :picture, :tag_list, :picture_file_name])
     end
 
     def check_user_ownership!
-      unless current_user == gallery.user
-        flash[:error] = "You are not permitted to do this action. Please log in."
-        redirect_to new_user_session_path
-      end
+      return unless current_user == gallery.user
+      flash[:error] = "You are not permitted to do this action. Please log in."
+      redirect_to new_user_session_path
     end
 end
